@@ -32,7 +32,6 @@ namespace Restful
         public async Task<T> GetStreamAsync<T>(string param = "") =>
             await JsonSerializer.DeserializeAsync<T>(await HttpClient.GetStreamAsync($"{URLApi}/{param}"));
 
-
         public async Task<IEnumerable<T>> GetAllAsync<T>() =>
             Newton.JsonConvert.DeserializeObject<List<T>>(
                 (await HttpClient.GetAsync(URLApi))
@@ -46,7 +45,6 @@ namespace Restful
                 .Content
                 .ReadAsStringAsync()
                 .Result);
-
 
         public async Task<IEnumerable<T>> GetAllByteArrayAsync<T>() =>
             JsonSerializer.Deserialize<List<T>>(await HttpClient.GetByteArrayAsync(URLApi));
@@ -114,8 +112,5 @@ namespace Restful
 
             return returnType;
         }
-
-
     }
-
 }
